@@ -1,0 +1,65 @@
+/*PROGRAM JS DO OBLICZANIA WYZNACZNIKA MACIERZY*/
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+	<script>
+	
+	/*test*/
+	var tab=[[1,5],[2,4]];
+	
+	function wyznacznik_2x2(n){
+		return n[0][0]+ ',' +n[0][1] + ','+ n[1][0] + ',' +n[1][1]+' Wyznacznik: ' + (n[0][0]*n[1][1]-n[0][1]*n[1][0]) ;
+	}
+	
+	var numerKolumny=0;
+	var aktualnyWyznacznik=0;
+	var minor=0;	//minor po usunięciu i-tego wiersza i j-tej kolumny
+	var stopienMinora=0;
+
+	
+	//FUNKCJA SARRUS
+	
+	function sarrus(tab, minor, wielkoscMinora, wiersz, kolumna, aktualnyWyznacznik){
+		
+			/*warunek zakończenia rekurencji - sprawdzenie czy nie osiągnęliśmy macierzy 2x2*/
+		
+		if(tab.length==1)
+		return tab[0][0]n ;
+		
+		else{
+		aktulnyWyznacznik=0;
+		
+		for(var x=0; x<j;x++){
+			for(var y=0;y<i;y++){
+				
+			}
+		}
+		
+		wielkoscMinora=wielkoscMinora--;	
+		minor=NULL;
+		
+		minor=new Array(stopienMinora);		//deklarowanie mniejszego minora
+		
+		for(var licznik=0;licznik<stopienMinora;licznik++){
+			minor[licznik]=new Array(stopienMinora);}
+		
+		
+		//return aktualnyWyznacznik+tab[i][j]*Math.pow(-1,i+1+j+1)*sarrus[minor,];
+		
+		}
+	}
+	
+	console.log(wyznacznik_2x2(tab));
+	
+	
+	
+
+		
+		console.log(Math.pow(-2,3));
+	</script>
+</body>
+</html>
