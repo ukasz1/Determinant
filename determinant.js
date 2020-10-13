@@ -1,13 +1,10 @@
-	/*Dane wejściowe*/
-	var tab=[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]];
-	var kolumna=3;
-	
-	
-	//FUNKCJA minorMacierz(tab,kolumna)
-	// Funkcja zwraca minor macierzy 'tab' po usunięciu pierwszego [zerowego] wiersza i kolumny o indeksie 'kolumna'.
-	//
-	// tab - tablica dwuwymiarowa
-	// kolumna - kolumna wykreślana w rozwinięciu Laplace'a
+	/*	FUNKCJA minorMacierz(tab,kolumna)
+		Funkcja zwraca minor macierzy 'tab' po usunięciu pierwszego [zerowego] wiersza i kolumny o indeksie 'kolumna'.
+		
+		Parametry:
+		tab 	- tablica dwuwymiarowa
+		kolumna - kolumna wykreślana w rozwinięciu Laplace'a
+	*/
 	
 		function minorMacierzy(tab, kolumna){
 		
@@ -30,32 +27,49 @@
 		}
 		
 		return minor;
-	
 	}
 	
 	
-	//Sprawdzenie wyników
-	console.log('Macierz pierwotna:');
-	console.log(tab);
-	console.log("Indeks kolumny z rozwiniecia Laplace'a: " + kolumna);
-	console.log('Minor:');
-	console.log(minorMacierzy(tab,kolumna));
-	
 
-	
-	//FUNKCJA determinant();
-	
-	function determinant(){
-		
 
+	/*	FUNKCJA det(tab);
+		Funkcja rekurencyjna; zwraca wyznacznik macierzy 'tab' zapisanej w postaci tablicy dwuwymiarowej
+		poprzez zastosowanie rozwinięcia Laplace'a względem pierwszego wiersza.
+		Do uzyskania minorów wykorzystywana jest funkcja minorMacierz().
 		
+		Parametry:
+		tab 	- tablica dwuwymiarowa
+	*/
 	
+	function det(tab){
+		
+		var wyznacznik;
+		
+		if (tab.length==1){			// warunek końca rekurencji
+			wyznacznik=tab[0];
+			return wyznacznik;
+		}
+		else						// rozwinięcie Laplace'a
+			wyznacznik=0;
+			for(let j=0; j<tab.length; j++){
+				wyznacznik=wyznacznik+tab[0][j] * Math.pow(-1,j+2) * det(minorMacierzy(tab,j));
+			}
+			
+		return wyznacznik;
 	}
 	
 
-	
-	
-	
 
-		
-	// console.log(Math.pow(-2,3));
+//----------Sprawdzenie wyników--------------
+	
+	var tab1=[5];											// det = 5
+	var tab2=[[3,5],[2,8]];									// det = 14
+	var tab3=[[1,2,4],[4,5,2],[3,2,2]];						// det =-26
+	var tab4=[[1,1,4,4],[2,1,8,8],[3,2,2,2],[7,8,6,3]];		// det =-30
+
+	console.log("Macierz pierwotna:");
+	console.log(tab4);
+	console.log("Wyznacznik macierzy jest rowny:");
+	console.log(det(tab4));
+
+//EOF
